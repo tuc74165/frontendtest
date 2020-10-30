@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,10 +18,16 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
-        path: '',
+        path: 'home',
         component: HomeComponent
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/home'
       },
       {
         path: 'classification',
@@ -29,6 +36,10 @@ import { HomeComponent } from './home/home.component';
       {
         path: 'extraction',
         component: ExtractionComponent
+      },
+      {
+        path: '**',
+        component: HomeComponent
       }
     ], {useHash: false})
   ],

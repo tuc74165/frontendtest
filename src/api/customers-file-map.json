@@ -1,0 +1,7 @@
+{
+  "Black Knight": "classifications/BlackKnight.csv",
+  "Google": "classifications/Google.csv",
+  "Heavywater": "classifications/HeavyWater.csv",
+  "Yahoo": "classifications/Yahoo.csv",
+  "We Bank": "classifications/WeBank.csv"
+}
