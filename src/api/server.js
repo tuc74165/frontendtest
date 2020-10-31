@@ -75,7 +75,6 @@ app.get('/getFilesByCustomer/:customer', function (req, res) {
      res.end( JSON.stringify(user));
   });
 });
-app.use(express.static('dist/'));
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
