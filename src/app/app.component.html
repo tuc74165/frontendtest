@@ -17,32 +17,17 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
   .toolbar {
     margin: auto;
     padding: 0 16px;
     flex-direction: column;
     align-items: center;
-    height: 100px;
-    min-width:575px;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 35%, rgba(0, 0, 0, 0.5) 100%);
+    height: 110px;
+    min-width:786px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 35%, rgba(0, 0, 0, 0.6) 100%);
     position:relative;
+    border-bottom:1px solid #000;
+    z-index:1;
   }
 
   .toolbar img {
@@ -50,11 +35,16 @@
   }
 
   .content {
-    display: flex;
     padding: 0 16px;
-    min-width:575px;
+    min-width: 786px;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    min-height: 1000px;
   }
 
   svg.material-icons {
@@ -113,6 +103,7 @@
     margin-right: 10px;
     padding-right: 10px;
     line-height: 1;
+    font-size: 1.6em;
     font-family: "proxima-nova", sans-serif;
     color: #ffffff;
     text-transform: uppercase;
@@ -121,110 +112,6 @@
 
   .header .quick-links li:not(:last-of-type) {
     border-right: 1px solid #ffffff;
-  }
-
-  footer {
-    padding: 20px 5px;
-    background-color: #393939;
-    background-size: 250px;
-    background-repeat: no-repeat;
-    background-position: center right;
-    background-image: url("https://cdn.blackknightinc.com/wp-content/themes/bkf/img/backgrounds/footer-bg.png");
-    margin:8px 0px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-    color:#fff;
-    min-width:575px;
-    padding: 0 16px;
-    position:absolute;
-    bottom:0px;
-    height:fit-content;
-    left:0px;
-    right:0px;
-    max-height: 200px;
-    overflow: hidden;
-  }
-
-  footer .footer-links {
-      margin:10px 0px;
-  }
-
-  footer .footer-links .footer-quick-links {
-    margin: 0;
-    margin-bottom: 40px;
-    list-style-type: none;
-  }
-
-  footer .footer-info .heading {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-
-  footer .footer-info .body,
-  footer .fake-link {
-    font-size: 14px;
-    color: #888888;
-  }
-
-  footer .footer-copyright .copyright {
-    font-size: 12px;
-    color: #888888;
-  }
-
-  footer .footer-info {
-    margin: 10px 0;
-  }
-
-
-  footer .fake-link {
-    cursor:pointer;
-  }
-
-  footer .fake-link:hover {
-    color:#ffffff;
-  }
-
-  .two-column {
-    display:flex;
-    flex-direction:row;
-    width:100%;
-    padding:20px;
-  }
-
-  .two-column .column {
-    flex:1;
-    padding:20px;
-  }
-
-  .two-column .column:not(:last-of-type) {
-    border-right:1px solid #888888;
-  }
-
-  @media screen and (min-width: 48em) {
-    ul li, ol li {
-      font-size: 18px;
-    }
-  }
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .header > * {
-      width: 100%;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
   }
 </style>
 
@@ -238,42 +125,7 @@
       <li><a class = "nav-link" routerLink="/extraction" routerLinkActive="active">Extraction</a></li>
     </ul>
   </div>
-    <div class="spacer"></div>
 </div>
-
 <div class="content" role="main">
   <router-outlet></router-outlet>
-
-  <!-- Footer -->
-  <footer>
-    <div class="two-column">
-      <div class="column">
-        <section class="footer-info">
-          <div class="heading">Sample Company, Inc.	</div>
-          <div class="body">
-            101 Random Avenue<br>Jacksonville, FL 32204<br>123.234.2345<br>
-            <a href="mailto:samplecompany@sample.com" class="contactEmail">samplecompany@sample.com</a><br>
-            <br><style>a.contactEmail:hover {text-decoration: underline;}</style>
-          </div>
-        </section>
-      </div>
-      <div class="column">
-        <div>Not Real Links</div>
-        <div class="two-column">
-          <div class="column" style="border-right:none;">
-            <div class="fake-link">About Us</div>
-            <div class="fake-link">Investors</div>
-            <div class="fake-link">Careers</div>
-            <div class="fake-link">Support and Login</div>
-          </div>
-          <div class="column">
-            <div class="fake-link">Privacy Notice</div>
-            <div class="fake-link">Site Map</div>
-            <div class="fake-link">Search</div>
-            <div class="fake-link">Contact Us</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
 </div>

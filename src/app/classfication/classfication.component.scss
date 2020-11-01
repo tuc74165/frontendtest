@@ -1,0 +1,38 @@
+:host {
+  position: absolute;
+  top: 110px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  padding: 30px 5%;
+}
+
+.classification-table {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid #008198;
+  box-shadow: 0px 0px 20px #ddd;
+  font-size:1.2em;
+  th {
+    background: #008198;
+    color: #fff;
+    padding: 15px 5px;
+    text-transform: uppercase;
+  }
+  tr:not(:last-of-type) td {
+    border-bottom:1px solid #555;
+  }
+  tr td:not(:last-of-type) {
+    border-right:1px solid #ddd;
+  }
+  tr td {
+    padding: 20px 5px;
+  }
+  tr td:first-of-type {
+    background: #008198;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
+

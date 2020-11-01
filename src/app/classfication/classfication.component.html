@@ -1,6 +1,29 @@
 <div>Classfication Page</div>
 <div>
-  <li *ngFor="let customer of formatedData | keyvalue">
-    {{customer.key}}
-  </li>
+  <table class="classification-table">
+    <th *ngFor = "let column of headers">
+      {{column}}
+    </th>
+    <tr *ngFor = "let row of rows;let rowIndex = index">
+      <td *ngFor = "let column of headers;let colIndex = index" (click)="onCellClicked(colIndex, row[column], column)">
+        {{row[column]}}
+      </td>
+    </tr>
+  </table>
+
 </div>
+<ng-template #pdfPreviewModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <pdf-viewer [src]="pdfContent"
+        [render-text]="true"
+        [fit-to-page]="true"
+        style="display: block;"
+    ></pdf-viewer>
+  </div>
+</ng-template>
