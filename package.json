@@ -27,8 +27,12 @@
     "bootstrap": "^4.5.3",
     "csv-parser": "^2.3.3",
     "csvjson": "^5.1.0",
+    "lodash": "^4.17.20",
+    "ng-click-outside": "^7.0.0",
+    "ng-multiselect-dropdown": "^0.2.10",
     "ng2-pdf-viewer": "^6.3.2",
     "rxjs": "~6.5.4",
+    "sweetalert2": "^10.9.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

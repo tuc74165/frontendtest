@@ -1,9 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { GlobalService } from './service/global.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     ClassficationComponent,
     ExtractionComponent
    ],
@@ -23,7 +29,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
+    MatProgressBarModule,
+    ClickOutsideModule,
     PdfViewerModule,
+    NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forRoot([
       {
         path: 'home',
@@ -49,7 +59,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ], {useHash: false}),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

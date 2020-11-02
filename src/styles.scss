@@ -37,7 +37,65 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 10px;
   .modal-body {
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
+}
+
+.mat-progress-bar-background,
+.mat-progress-bar-buffer {
+  fill:#008198;
+
+}
+
+.mat-progress-bar-fill::after {
+  background-color:#008198;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color:#0da97f;
+}
+.swal2-styled.swal2-confirm:hover {
+  background-color:lighten(#0da97f, 10%);
+}
+
+.multiselect-dropdown {
+  .dropdown-btn {
+    height:50px;
+    .selected-item {
+      background:#008198!important;
+      border:1px solid #008198!important;
+      height: 35px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80%;
+      white-space: nowrap;
+    }
+  }
+  .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
+    background: #008198!important;
+  }
+  .multiselect-item-checkbox input[type=checkbox] + div:before {
+    color: #008198!important;
+    border: 1px solid #008198!important;
+  }
+}
+
+button.close:focus {
+  outline:none!important;
+}
+
+.btn-primary {
+  margin: 10px;
+  background: #0da97f;
+  border-color: #0da97f;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background: lighten(#0da97f,10%);
+  border-color: #0da97f;
+}
+.btn-primary.focus, .btn-primary:focus {
+  box-shadow:0 0 0 0.2rem lighten(#0da97f,10%);
 }
 

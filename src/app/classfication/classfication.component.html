@@ -1,16 +1,60 @@
-<div>Classfication Page</div>
 <div>
-  <table class="classification-table">
-    <th *ngFor = "let column of headers">
-      {{column}}
-    </th>
-    <tr *ngFor = "let row of rows;let rowIndex = index">
-      <td *ngFor = "let column of headers;let colIndex = index" (click)="onCellClicked(colIndex, row[column], column)">
-        {{row[column]}}
-      </td>
-    </tr>
-  </table>
-
+  <div class="page-title">Classfications Page</div>
+  <div class="page-actions">
+    <div class="button-group">
+      <button class="btn btn-lg btn-primary" >Add New Customer</button>
+      <button class="btn btn-lg btn-primary" >Add New Document</button>
+    </div>
+    <div class="file-dropdown">
+      <ng-multiselect-dropdown [placeholder]="'Select Documents'"
+        [data]="documentList"
+        [(ngModel)]="selectedFiles"
+        (onSelect)="onItemSelect($event, 'select', 'document')"
+        (onSelectAll)="onItemSelect($event, 'selectAll', 'document')"
+        (onDeSelect)="onItemSelect($event, 'deSelect', 'document')"
+        (onDeSelectAll)="onItemSelect($event, 'deSelectAll', 'document')"
+        [settings]="dropdownSettings">
+      </ng-multiselect-dropdown>
+    </div>
+    <div class="customer-dropdown">
+      <ng-multiselect-dropdown [placeholder]="'Select Customers'"
+        [data]="customerList"
+        [(ngModel)]="selectedCustomers"
+        (onSelect)="onItemSelect($event, 'select', 'customer')"
+        (onSelectAll)="onItemSelect($event, 'selectAll', 'customer')"
+        (onDeSelect)="onItemSelect($event, 'deSelect', 'customer')"
+        (onDeSelectAll)="onItemSelect($event, 'deSelectAll', 'customer')"
+        [settings]="dropdownSettings">
+      </ng-multiselect-dropdown>
+    </div>
+  </div>
+  <div class="page-container">
+    <div class="empty-placeholder" [hidden] = "filteredRows.length>0">
+      <div class="empty-inner">
+        <img src="../../assets/images/empty_holder.png" alt="image" style="height:200px;">
+      </div>
+    </div>
+    <div class="main-table" [hidden] = "filteredRows.length===0">
+      <table class="classification-table">
+        <th *ngFor = "let column of headers">
+          {{column}}
+        </th>
+        <tr *ngFor = "let row of filteredRows;let rowIndex = index;">
+          <td *ngFor = "let column of headers;let colIndex = index;"
+            (click)="onCellClicked(colIndex, row[column], column)"
+            (clickOutside)="showElement[row[column]+column]=false"
+            [ngStyle]="{'width': row[column].length*8+'px'}"
+            [ngClass]="{'editing':showElement[row[column]+column]}">
+          <div [hidden] = "!showElement[row[column]+column]"><input placeholder="{{row[column]}}" value="{{row[column]}}" (change)="inputChanged($event,rowIndex,row['documentType'],column)"></div>
+            <div [hidden] = "showElement[row[column]+column]">{{row[column]}}</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--<div class="loading-indicator" [hidden]="!loading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>-->
+  </div>
 </div>
 <ng-template #pdfPreviewModal let-modal>
   <div class="modal-header">
@@ -20,10 +64,18 @@
     </button>
   </div>
   <div class="modal-body">
-    <pdf-viewer [src]="pdfContent"
-        [render-text]="true"
-        [fit-to-page]="true"
-        style="display: block;"
-    ></pdf-viewer>
+    <div [hidden] = "!showElement['noPDF']">
+      <div class="alert alert-info">No Sample PDF for this document Type</div>
+      <div style="margin:50px 20px;">
+        <div class="file-upload-btn">
+          <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf">
+          <button class="btn btn-primary btn-upload" (click) = "uploadPDF()">Upload A Sample</button>
+        </div>
+        <pdf-viewer [src]="pdfContent" [render-text]="true" [fit-to-page]="true" style="display: block;" id="preview" style="border-top:2px solid #ccc;padding-top:20px;"></pdf-viewer>
+      </div>
+    </div>
+    <div [hidden] = "showElement['noPDF']">
+      <pdf-viewer [src]="pdfContent" [render-text]="true" [fit-to-page]="true" style="display: block;"></pdf-viewer>
+    </div>
   </div>
 </ng-template>

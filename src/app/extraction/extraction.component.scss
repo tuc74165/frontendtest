@@ -5,5 +5,39 @@
   left: 0px;
   right: 0px;
   text-align: center;
-  padding: 30px 5%;
+  padding: 0px;
+}
+
+.page-container {
+  padding:0px 5%;
+}
+
+.page-title {
+  margin-bottom: 20px;
+  border-bottom: 3px solid #ddd;
+  padding: 30px;
+  text-align: left;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.page-actions {
+  text-align:right;
+  padding:0px 5%;
+  width:100%;
+  display:flex;
+  flex-flow: row-reverse;
+  .button-group {
+    position: absolute;
+    left: 5%;
+  }
+  .customer-dropdown,
+  .file-dropdown {
+    flex: 1;
+    margin: 10px;
+    font-size: 1.2rem;
+    min-width:250px;
+    max-width:450px;
+  }
 }

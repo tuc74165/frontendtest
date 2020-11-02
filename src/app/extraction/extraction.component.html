@@ -1,3 +1,15 @@
-<p>
-  extraction works!
-</p>
+<div>
+  <div class="page-title">Classfication Page</div>
+  <div class="page-actions">
+    <div class="file-dropdown">
+      <ng-multiselect-dropdown [placeholder]="'Select Documents'"
+        [data]="fileList"
+        [(ngModel)]="selectedFiles"
+        (onSelect)="onItemSelect($event, 'select', 'document')"
+        [settings]="dropdownSettings">
+      </ng-multiselect-dropdown>
+    </div>
+  </div>
+  <div class="page-container">
+  </div>
+</div>

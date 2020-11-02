@@ -5,7 +5,25 @@
   left: 0px;
   right: 0px;
   text-align: center;
-  padding: 30px 5%;
+  padding: 0px;
+}
+
+.page-container {
+  padding:0px 5%;
+}
+
+.page-title {
+  margin-bottom: 20px;
+  border-bottom: 3px solid #ddd;
+  padding: 30px;
+  text-align: left;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.loading-indicator {
+  margin-top: 80px;
 }
 
 .classification-table {
@@ -26,13 +44,117 @@
   tr td:not(:last-of-type) {
     border-right:1px solid #ddd;
   }
+  tr td.editing {
+    padding: 5px;
+    background: #00819888;
+    input {
+      height: 50px;
+      width: 90%;
+      border: 1px solid #008198;
+    }
+  }
   tr td {
     padding: 20px 5px;
   }
+  th:first-of-type {
+    width:300px;
+  }
   tr td:first-of-type {
+    width:300px;
     background: #008198;
     color: #fff;
     text-transform: uppercase;
   }
 }
 
+.mat-progress-bar {
+  height:20px;
+}
+
+.page-actions {
+  text-align:right;
+  padding:0px 5%;
+  width:100%;
+  display:flex;
+  flex-flow: row-reverse;
+  .button-group {
+    position: absolute;
+    left: 5%;
+    .btn-primary {
+      margin: 10px;
+      background: #008198;
+      border-color: #008198;
+    }
+    .btn-primary:hover {
+      background: lighten(#008198,10%);
+    }
+  }
+  .customer-dropdown,
+  .file-dropdown {
+    flex: 1;
+    margin: 10px;
+    font-size: 1.2rem;
+    min-width:250px;
+    max-width:450px;
+  }
+}
+
+.empty-placeholder {
+  height: 500px;
+  position: relative;
+  border: 3px solid #008198;
+  border-radius:8px;
+  margin-top:20px;
+  .empty-inner {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.btn-upload {
+  height: 45px;
+  margin: 0px;
+  font-size: 1.2em;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.alert-info {
+  margin:20px;
+}
+
+.file-upload-btn {
+  overflow: hidden;
+  position: relative;
+}
+
+.file-upload-btn input[type="file"] {
+  font-size: 1.2em;
+  line-height: 2.2em;
+  overflow: hidden;
+  vertical-align: middle;
+  padding: 2px;
+  border: 1px dashed #aaa;
+  padding-left: 10px;
+}
+
+.file-upload-btn input[type="file"]::-webkit-file-upload-button {
+  background:#FFFFFF;
+  color: #0da97f;
+  border: 1px solid #0da97f;
+  line-height: 2em;
+  padding: 2px 20px;
+  float: right;
+  border-radius:.25rem;
+}
+
+
+.file-upload-btn input[type="file"]::-webkit-file-upload-button:focus {
+  outline:none!important;
+}
