@@ -87,9 +87,11 @@
     .btn-primary {
       background: #008198;
       border-color: #008198;
+      font-size: 1.1em;
     }
     .btn-primary:not(:last-of-type) {
       margin-right:5px;
+      margin-left: 0px;
     }
     .btn-primary:hover {
       background: lighten(#008198,10%);
