@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -16,13 +17,15 @@ import { ClassficationComponent } from './classfication/classfication.component'
 import { ExtractionComponent } from './extraction/extraction.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './extraction/filterPipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ClassficationComponent,
-    ExtractionComponent
+    ExtractionComponent,
+    FilterPipe
    ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     NgbModule,
     FormsModule,
+    DragDropModule,
     ClickOutsideModule,
     PdfViewerModule,
     MatIconModule,

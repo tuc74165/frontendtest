@@ -4,7 +4,7 @@
     <div class="button-group">
       <button class="btn btn-lg btn-primary" (click)="addNewCustomer()"><mat-icon>add</mat-icon>Add New Customer</button>
       <button class="btn btn-lg btn-primary" (click)="addNewDocument()"><mat-icon>add</mat-icon>Add New Document</button>
-      <button class="btn btn-outline-primary btn-export" (click)="exportClassificationData()"><mat-icon style="font-size:30px;">get_app</mat-icon></button>
+      <button class="btn btn-outline-primary btn-export" (click)="exportClassificationData()" title="Export Selected Classification Data"><mat-icon style="font-size:30px;">get_app</mat-icon></button>
     </div>
     <div class="hidden-menu" (clickOutside) = "showElement['hiddenMenu'] = false">
       <mat-icon style="font-size: 50px;" (click) = "showElement['hiddenMenu'] = true">menu</mat-icon>

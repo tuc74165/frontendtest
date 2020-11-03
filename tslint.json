@@ -87,7 +87,8 @@
     "only-arrow-functions":false,
     "object-literal-shorthand":false,
     "prefer-for-of": false,
-    "jsdoc-format": false
+    "jsdoc-format": false,
+    "one-variable-per-declaration": false
   },
   "rulesDirectory": [
     "codelyzer"

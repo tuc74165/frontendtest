@@ -1,6 +1,10 @@
 <div>
   <div class="page-title">Classfication Page</div>
   <div class="page-actions">
+    <div class="button-group">
+      <button id="exportFields" class="btn btn-lg btn-primary" (click)="exportTXT()"><mat-icon>get_app</mat-icon>Export Fields Of Selected</button>
+      <button class="btn btn-outline-primary btn-export" (click)="exportExtractionData()" title="Export All Data Fields"><mat-icon style="font-size:30px;">get_app</mat-icon></button>
+    </div>
     <div class="file-dropdown">
       <ng-multiselect-dropdown [placeholder]="'Select Documents'"
         [data]="fileList"
@@ -11,11 +15,35 @@
     </div>
   </div>
   <div class="page-container">
-    <div>
-      <div *ngFor = "let field of selectedDataElements;let index = index;">
-        <strong>{{field['Data Elements']}}</strong>
-        {{field['Group Number']}}
-        {{field['Datapoint Order']}}
+    <div class="table-content" [hidden] = "!selectedDocumentType || selectedDocumentType.length === 0">
+      <div class="left-view">
+        <div cdkDropList
+          id="all"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="selectedDataElements"
+          class="data-element-list">
+          <div class="group-box" *ngFor="let group of groups;">
+            <div
+              class="field-item"
+              *ngFor="let field of selectedDataElements|filter:group;"
+              [cdkDragData]="field"
+              cdkDrag>{{field['Data Elements']}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-view">
+        <div [hidden] = "!showElement['noPDF']">
+          <div class="alert alert-info">No Sample PDF for this document Type</div>
+        </div>
+        <div [hidden] = "showElement['noPDF']">
+          <pdf-viewer [src]="pdfContent" [render-text]="true" [fit-to-page]="true" style="display: block;"></pdf-viewer>
+        </div>
+      </div>
+    </div>
+    <div class="empty-placeholder" [hidden] = "selectedDocumentType && selectedDocumentType.length>0">
+      <div class="empty-inner">
+        <img src="../../assets/images/empty_holder2.png" alt="image" style="height:180px;">
       </div>
     </div>
   </div>
