@@ -5,9 +5,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ClickOutsideModule } from 'ng-click-outside';
+import {MatIconModule} from '@angular/material/icon';
 import { GlobalService } from './service/global.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,9 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    MatProgressBarModule,
     ClickOutsideModule,
     PdfViewerModule,
+    MatIconModule,
     NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forRoot([
       {

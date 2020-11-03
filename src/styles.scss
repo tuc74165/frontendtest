@@ -67,7 +67,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       height: 35px;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 80%;
+      max-width: 75%;
       white-space: nowrap;
     }
   }
@@ -95,7 +95,26 @@ button.close:focus {
   background: lighten(#0da97f,10%);
   border-color: #0da97f;
 }
-.btn-primary.focus, .btn-primary:focus {
+.btn-primary.focus, .btn-primary:focus,
+.btn-outline-primary.focus, .btn-outline-primary:focus  {
   box-shadow:0 0 0 0.2rem lighten(#0da97f,10%);
 }
 
+.swal2-styled.swal2-confirm {
+  background: #0da97f!important;
+}
+
+.create-dialog {
+  margin: 20px 0px;
+  font-size: 20px;
+  label {
+    display: block;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  input {
+    height: 45px;
+    width: 100%;
+  }
+}

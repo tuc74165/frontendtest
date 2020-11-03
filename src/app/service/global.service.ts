@@ -8,6 +8,7 @@ export class GlobalService {
     private customerList: string[] = [];
     private baseUrl = environment.baseUrl;
     private documentMap: object = {};
+    private dataElements;
     constructor(private http: HttpClient) {}
 
     setDocumentList(documentList: string[]) {
@@ -50,6 +51,14 @@ export class GlobalService {
         return this.baseUrl;
     }
 
+    setDataElements(dataElement) {
+      this.dataElements = dataElement;
+    }
+
+    getDataElements() {
+      return this.dataElements;
+    }
+
     InitializeData() {
       const service = this;
       const promise = new Promise(function(resolve, reject) {
@@ -57,10 +66,11 @@ export class GlobalService {
           if (!response) {
             return;
           }
-          const dataMap = response.dataMap;
+          const dataMap = response.values[0].dataMap;
           component.customerList = Object.keys(dataMap);
-          component.documentList = Object.keys(response.documentMap);
-          component.documentMap = response.documentMap;
+          component.documentList = Object.keys(response.values[0].documentMap);
+          component.documentMap = response.values[0].documentMap;
+          component.dataElements = response.values[1].dataElements;
           component.rawData = dataMap;
           resolve(dataMap);
         }, 'get', null);

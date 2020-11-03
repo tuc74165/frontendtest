@@ -1,6 +1,6 @@
 :host {
   position: absolute;
-  top: 110px;
+  top: 90px;
   bottom: 0px;
   left: 0px;
   right: 0px;
@@ -10,14 +10,16 @@
 
 .page-container {
   padding:0px 5%;
+  position:relative;
+  z-index:0
 }
 
 .page-title {
   margin-bottom: 20px;
   border-bottom: 3px solid #ddd;
-  padding: 30px;
+  padding: 25px;
   text-align: left;
-  font-size: 2rem;
+  font-size: 1.8em;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -31,7 +33,7 @@
   margin-top: 20px;
   border: 1px solid #008198;
   box-shadow: 0px 0px 20px #ddd;
-  font-size:1.2em;
+  font-size:1.1em;
   th {
     background: #008198;
     color: #fff;
@@ -76,31 +78,84 @@
   padding:0px 5%;
   width:100%;
   display:flex;
+  z-index:1;
+  position:relative;
   flex-flow: row-reverse;
   .button-group {
     position: absolute;
     left: 5%;
     .btn-primary {
-      margin: 10px;
       background: #008198;
       border-color: #008198;
+    }
+    .btn-primary:not(:last-of-type) {
+      margin-right:5px;
     }
     .btn-primary:hover {
       background: lighten(#008198,10%);
     }
+    .btn-outline-primary {
+      color: #008198;
+      border-color: #008198;
+    }
+    .btn-outline-primary:hover,
+    .btn-outline-primary:active,
+    .btn-outline-primary:focus {
+      background: #00819833;
+    }
+    .btn-export {
+      padding:10px;
+    }
   }
-  .customer-dropdown,
-  .file-dropdown {
-    flex: 1;
-    margin: 10px;
-    font-size: 1.2rem;
-    min-width:250px;
-    max-width:450px;
+  .hidden-menu {
+    position:absolute;
+    left:5%;
+    cursor:pointer;
+    .menu {
+      position: absolute;
+      width: 200px;
+      top: 50px;
+      left: 0px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding:0px;
+      text-align: left;
+    }
+    .menu-item {
+      padding: 10px;
+      color: #000;
+      background:#fff;
+      z-index:1;
+    }
+    .menu-item:not(:last-of-type) {
+      border-bottom: 1px solid #000;
+    }
+    .menu-item:hover {
+      color:#fff;
+      background:lighten(#008198,10%);
+    }
+  }
+
+  .hidden-menu:hover {
+    color:#008198;
+  }
+  .dropdown-group {
+    display:inline-block;
+    width:40%;
+    .customer-dropdown,
+    .file-dropdown {
+      display:inline-block;
+      width:48%;
+      margin: 1%;
+      font-size: 1.2rem;
+      min-width:280px;
+      max-width:350px;
+    }
   }
 }
 
 .empty-placeholder {
-  height: 500px;
+  height: 300px;
   position: relative;
   border: 3px solid #008198;
   border-radius:8px;
@@ -157,4 +212,27 @@
 
 .file-upload-btn input[type="file"]::-webkit-file-upload-button:focus {
   outline:none!important;
+}
+
+@media (max-width: 950px) {
+  .page-actions .button-group {
+    display:none;
+  }
+  .page-actions .hidden-menu {
+    display:block;
+  }
+}
+
+@media (min-width:950px) {
+  .page-actions .hidden-menu {
+    display:none;
+  }
+  .page-actions .button-group {
+    display:block;
+  }
+}
+
+mat-icon {
+  vertical-align: text-bottom;
+  margin-right:5px;
 }

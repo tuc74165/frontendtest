@@ -86,7 +86,8 @@
     "use-pipe-transform-interface": true,
     "only-arrow-functions":false,
     "object-literal-shorthand":false,
-    "prefer-for-of": false
+    "prefer-for-of": false,
+    "jsdoc-format": false
   },
   "rulesDirectory": [
     "codelyzer"

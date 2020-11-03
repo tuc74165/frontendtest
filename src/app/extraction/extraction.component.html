@@ -4,12 +4,19 @@
     <div class="file-dropdown">
       <ng-multiselect-dropdown [placeholder]="'Select Documents'"
         [data]="fileList"
-        [(ngModel)]="selectedFiles"
+        [(ngModel)]="selectedDocumentType"
         (onSelect)="onItemSelect($event, 'select', 'document')"
         [settings]="dropdownSettings">
       </ng-multiselect-dropdown>
     </div>
   </div>
   <div class="page-container">
+    <div>
+      <div *ngFor = "let field of selectedDataElements;let index = index;">
+        <strong>{{field['Data Elements']}}</strong>
+        {{field['Group Number']}}
+        {{field['Datapoint Order']}}
+      </div>
+    </div>
   </div>
 </div>
