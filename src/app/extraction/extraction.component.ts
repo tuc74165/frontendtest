@@ -18,6 +18,7 @@ export class ExtractionComponent implements OnInit {
   groups = [];
   showElement = {};
   pdfContent: string;
+  documentMap = {};
 
   dropdownSettings = {
     singleSelection: true,
@@ -33,21 +34,33 @@ export class ExtractionComponent implements OnInit {
       }
       this.dataElements[row['Document Type']].push(row);
     });
-    this.fileList = Object.keys(this.dataElements);
+    this.fileList = this.commonService.getDocumentList();
+    this.documentMap = this.commonService.getDocumentMap();
   }
 
   onItemSelect(items: any, type: string, dropdown: string) {
-    this.groups = [];
-    // Filter by document type.
-    this.selectedDataElements = cloneDeep(this.dataElements[this.selectedDocumentType[0]]).sort(function(a, b) {
-      return a['Group Number'] - b['Group Number'] || a['Datapoint Order'] - b['Datapoint Order'];
-    });
-    this.selectedDataElements.forEach(row => {
-      if (this.groups.indexOf(row['Group Number']) === -1) {
-      this.groups.push(row['Group Number']);
-    }});
-    this.pdfContent = 'https://s3.amazonaws.com/slu.backenddata/data/'
-    + this.commonService.getDocumentMap()[this.selectedDocumentType[0]].replaceAll(' ', '+');
+    if (!this.dataElements[this.selectedDocumentType[0]]) {
+      this.showElement['noFields'] = true;
+    } else {
+      this.showElement['noFields'] = false;
+      this.groups = [];
+      // Filter by document type.
+      this.selectedDataElements = cloneDeep(this.dataElements[this.selectedDocumentType[0]]).sort(function(a, b) {
+        return a['Group Number'] - b['Group Number'] || a['Datapoint Order'] - b['Datapoint Order'];
+      });
+      this.selectedDataElements.forEach(row => {
+        if (this.groups.indexOf(row['Group Number']) === -1) {
+        this.groups.push(row['Group Number']);
+      }});
+      if (this.documentMap[this.selectedDocumentType[0]].length === 0) {
+        this.showElement['noPDF'] = true;
+        this.pdfContent = null;
+      } else {
+        this.showElement['noPDF'] = false;
+        this.pdfContent = 'https://s3.amazonaws.com/slu.backenddata/data/'
+        + this.commonService.getDocumentMap()[this.selectedDocumentType[0]].replaceAll(' ', '+');
+      }
+    }
   }
 
   drop(event: CdkDragDrop<string[]>) {

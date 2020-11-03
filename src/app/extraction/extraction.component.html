@@ -15,7 +15,10 @@
     </div>
   </div>
   <div class="page-container">
-    <div class="table-content" [hidden] = "!selectedDocumentType || selectedDocumentType.length === 0">
+    <div [hidden] = "!showElement['noFields']">
+      <div class="alert alert-info" style="padding: 10%;">No date fields for the slected document type.</div>
+    </div>
+    <div class="table-content" [hidden] = "!selectedDocumentType || selectedDocumentType.length === 0 || showElement['noFields']">
       <div class="left-view">
         <div cdkDropList
           id="all"
@@ -34,7 +37,7 @@
       </div>
       <div class="right-view">
         <div [hidden] = "!showElement['noPDF']">
-          <div class="alert alert-info">No Sample PDF for this document Type</div>
+          <div class="alert alert-info" style="margin-top:30%;margin-left:30px;margin-right:30px;">No sample PDF for this document Type.</div>
         </div>
         <div [hidden] = "showElement['noPDF']">
           <pdf-viewer [src]="pdfContent" [render-text]="true" [fit-to-page]="true" style="display: block;"></pdf-viewer>
