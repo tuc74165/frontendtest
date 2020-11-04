@@ -4,18 +4,20 @@
   </div>
   <div class="home-content">
     <div class="about-project">
-      <div class="title">ABOUT THIS PROJECT</div>
-      <div class="text">
-        In the mortgage world, every lender has their own way of naming documents. One lender might call it a "W2", while anotehr migth call it a "Form W-2".
-        This project includes processes of file name translation and document columns extractions.
+      <div>
+        <div class="title">ABOUT THIS PROJECT</div>
+        <div class="text">
+          In the mortgage world, every lender has their own way of naming documents. One lender might call it a "W2", while anotehr migth call it a "Form W-2".
+          This project includes processes of file name translation and document columns extractions.
+        </div>
       </div>
     </div>
     <div class="home-button-group">
-      <div (click)= goToClassification() class="button" style="margin-left:80px; margin-right:10px">
+      <div (click)= goToClassification() class="button">
         <div class="icon"><img src="../../assets/images/img1.png" alt="image"></div>
         <div class="label"><a routerLink="/classification" routerLinkActive="active">Classification</a></div>
       </div>
-      <div (click)= goToExtraction() class="button" style="margin-right:80px; margin-left:10px">
+      <div (click)= goToExtraction() class="button">
         <div class="icon"><img src="../../assets/images/img2.png" alt="image"></div>
         <div class="label"><a routerLink="/extraction" routerLinkActive="active">Extraction</a></div>
       </div>
