@@ -179,7 +179,7 @@ export class ClassficationComponent implements OnInit {
       this.pdfContent = null;
       this.modalService.dismissAll();
       if (data['status'] === 200) {
-        this.documentMap[data['Document Type']] = data['documentPath'];
+        this.documentMap[data['documentType']] = data['documentPath'];
         // Update global values in common service.
         this.commonService.setDocumentMap(this.documentMap);
         Swal.fire('File uploaded successfully!');
