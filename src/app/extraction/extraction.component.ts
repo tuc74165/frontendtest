@@ -38,7 +38,11 @@ export class ExtractionComponent implements OnInit {
     this.documentMap = this.commonService.getDocumentMap();
   }
 
+  /**
+   *  When a document type is selected.
+   */
   onItemSelect(items: any, type: string, dropdown: string) {
+    // If a document type doesn't have fields available, show empty placeholder.
     if (!this.dataElements[this.selectedDocumentType[0]]) {
       this.showElement['noFields'] = true;
     } else {
@@ -52,6 +56,7 @@ export class ExtractionComponent implements OnInit {
         if (this.groups.indexOf(row['Group Number']) === -1) {
         this.groups.push(row['Group Number']);
       }});
+      // If a document type doesn't have a sample PDF, show empty placeholder.
       if (this.documentMap[this.selectedDocumentType[0]].length === 0) {
         this.showElement['noPDF'] = true;
         this.pdfContent = null;
@@ -63,12 +68,18 @@ export class ExtractionComponent implements OnInit {
     }
   }
 
+  /**
+   * When fields are dragged and droped in the container.
+   */
   drop(event: CdkDragDrop<string[]>) {
     const newGroup = this.selectedDataElements[event.currentIndex]['Group Number'];
     moveItemInArray(this.selectedDataElements, event.previousIndex, event.currentIndex);
     this.selectedDataElements[event.currentIndex]['Group Number'] = newGroup;
   }
 
+  /**
+   * Export fields of the selected document in 'fields.txt'
+   */
   exportTXT = () => {
     const a = document.createElement('a');
     document.body.appendChild(a);
@@ -77,9 +88,11 @@ export class ExtractionComponent implements OnInit {
     a.download = 'fields.txt';
     a.href = 'data:text/plain,' + data;
     a.click();
-    //window.URL.revokeObjectURL(url);
   }
 
+  /**
+   * Export All data available fields in to a csv file.
+   */
   exportExtractionData = () => {
     const options = {
       fieldSeparator: ',',
@@ -96,7 +109,7 @@ export class ExtractionComponent implements OnInit {
     const exportData = [];
     let maxFieldsCount = 0;
     let row: object;
-    Object.values(this.dataElements).every((file: []) => maxFieldsCount = Math.max(maxFieldsCount, file.length));
+    Object.values(this.dataElements).forEach((file: []) => maxFieldsCount = Math.max(maxFieldsCount, file.length));
     for (let i = 0; i < maxFieldsCount; i++) {
       row = {};
       Object.keys(this.dataElements).forEach(file => row[file] = this.dataElements[file][i] ? this.dataElements[file][i]['Data Elements'] : '');

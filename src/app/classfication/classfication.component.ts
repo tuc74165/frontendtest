@@ -215,8 +215,12 @@ export class ClassficationComponent implements OnInit {
     if (value == null) {
       return;
     }
+    const component = this;
     this.filteredRows[rowIndex][customerName] = value;
     this.commonService.callServer('/updateValue', function() {
+      const rawData = component.commonService.getRawData();
+      rawData[customerName].forEach((document: []) => {if (document['Document Type'] === documentType) {document['Customer Document Type'] = value; }});
+      component.commonService.setRawData(rawData);
       Swal.fire('Updated Successfully');
     } , 'post', {value: value, documentType: documentType, customerName: customerName});
   }
