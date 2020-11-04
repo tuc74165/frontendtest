@@ -59,10 +59,10 @@
     padding: 20px 5px;
   }
   th:first-of-type {
-    width:300px;
+    max-width:300px;
   }
   tr td:first-of-type {
-    width:300px;
+    max-width:300px;
     background: #008198;
     color: #fff;
     text-transform: uppercase;

@@ -289,6 +289,8 @@ export class ClassficationComponent implements OnInit {
             const row = {'Document Type': data['documentType']};
             this.customerList.forEach((customer) => {row[customer] = ''; });
             this.rows = this.rows.concat(row);
+            this.documentMap[data['documentType']] = '';
+            this.commonService.setDocumentMap(this.documentMap);
             Swal.fire('Document Type created successfully!');
           } else {
             Swal.fire('Error creating document type.' + data['message']);

@@ -54,7 +54,7 @@
           <td *ngFor = "let column of headers;let colIndex = index;"
             (click)="onCellClicked(colIndex, row['Document Type'], column)"
             (clickOutside)="showElement[row['Document Type']+column]=false"
-            [ngStyle]="{'width': row[column].length*8?row[column].length*8+'px':'auto'}"
+            [ngStyle]="{'width': row[column].length*8?row[column].length*8+'px':'200px'}"
             [ngClass]="{'editing':showElement[row['Document Type']+column]}">
           <div [hidden] = "!showElement[row['Document Type']+column]"><input placeholder="{{row[column]}}" value="{{row[column]}}" (change)="inputChanged($event,rowIndex,row['Document Type'],column)"></div>
             <div [hidden] = "showElement[row['Document Type']+column]">{{row[column]}}</div>
@@ -68,7 +68,7 @@
 <!--BEGIN: PDF Preview Modal-->
 <ng-template #pdfPreviewModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <h4 class="modal-title" id="modal-basic-title">PDF Preview</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
