@@ -219,7 +219,20 @@ export class ClassficationComponent implements OnInit {
     this.filteredRows[rowIndex][customerName] = value;
     this.commonService.callServer('/updateValue', function() {
       const rawData = component.commonService.getRawData();
-      rawData[customerName].forEach((document: []) => {if (document['Document Type'] === documentType) {document['Customer Document Type'] = value; }});
+      const bExist = false;
+      rawData[customerName].forEach((document: []) => {
+        if (document['Document Type'] === documentType) {
+          document['Customer Document Type'] = value;
+          this.bExist = true;
+        }
+      });
+      // If the customer didn't have that document type before, create a new entry.
+      if (!bExist) {
+        rawData[customerName].push({
+          'Document Type': documentType,
+          'Customer Document Type': value
+        });
+      }
       component.commonService.setRawData(rawData);
       Swal.fire('Updated Successfully');
     } , 'post', {value: value, documentType: documentType, customerName: customerName});
